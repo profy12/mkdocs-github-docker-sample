@@ -31,7 +31,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ github.actor}}/${{ env.IMAGE_NAME }}
 
       - name: debug item
         run: echo "the tag is ${{ steps.meta.outputs.tags }}"
@@ -45,7 +45,7 @@ jobs:
           #context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
-          #tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          #tags: ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
           labels: ${{ steps.meta.outputs.labels }}
 
 #      - name: Push image
