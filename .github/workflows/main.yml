@@ -33,10 +33,13 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
+      - name: debug item
+        run: echo "the tag is ${{ steps.meta.outputs.tags }}"
+
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          #context: .
+          context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
