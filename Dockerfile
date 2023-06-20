@@ -18,5 +18,5 @@ COPY . .
 RUN mkdocs build
 
 ## Et on place ca dans le container final
-#FROM nginx:alpine
-#COPY --from=build /app/site /usr/share/nginx/html
+FROM nginx:alpine
+COPY --from=build /app/site /usr/share/nginx/html
